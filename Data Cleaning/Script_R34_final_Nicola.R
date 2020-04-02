@@ -15,8 +15,8 @@ length(crctId)
 
 #####only keep intent-to-treat sample######
 pTaskList <- taskLog[taskLog$participantdao_id %in% crctId,] #Abgleich ids
-pTaskList <- pTaskList %>% mutate(date_final = as.POSIXct(pTaskList$corrected_datetime,format="%m/%d/%y %H:%M",tz=Sys.timezone())) #ändert format von date
-pTaskList <- pTaskList %>% group_by(participantdao_id) %>% slice(which.max(date_final)) #sucht für jeden participant max date und packt das mit id in neues objekt
+pTaskList <- pTaskList %>% mutate(date_final = as.POSIXct(pTaskList$corrected_datetime,format="%m/%d/%y %H:%M",tz=Sys.timezone())) #Ã¤ndert format von date
+pTaskList <- pTaskList %>% group_by(participantdao_id) %>% slice(which.max(date_final)) #sucht fÃ¼r jeden participant max date und packt das mit id in neues objekt
 View(pTaskList)
 
 tmpLst <- pTaskList %>% filter(session_name != 'PRE') #nimmt alles was nicht pre ist in objekt
